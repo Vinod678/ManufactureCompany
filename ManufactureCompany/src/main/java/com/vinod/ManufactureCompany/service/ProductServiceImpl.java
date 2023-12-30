@@ -5,6 +5,10 @@ import com.vinod.ManufactureCompany.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,4 +67,26 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProduct(int id) {
         productRepository.deleteById(id);
     }
+
+    @Override
+    public void sortProducts(){
+
+    }
+    @Override
+    public List<Product> getAllProductsSortedByName() {
+        // Retrieve all products sorted by prodName in ascending order
+        return productRepository.findAll(Sort.by("prodName"));
+    }
+
+    @Override
+    public List<Product> getAllProductsSortedById(){
+        logger.info("Sorted List of Products by Id");
+        return productRepository.findAll(Sort.by("prodId"));
+    }
+
+    @Override
+    public Page<Product> getAllProductsPaginated(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+
 }

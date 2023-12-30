@@ -1,5 +1,4 @@
 package com.vinod.ManufactureCompany.controller;
-import com.github.fge.jsonschema.core.load.SchemaLoader;
 import com.vinod.ManufactureCompany.model.Product;
 import com.vinod.ManufactureCompany.repository.ProductRepository;
 import com.vinod.ManufactureCompany.service.ProductService;
@@ -21,8 +20,6 @@ public class Controller {
     private ProductService productService;
 
 
-    @Value("classpath:schemas/product-schema.json")
-    private InputStream productSchemaStream;
 
     // ... existing mappings ...
 
@@ -31,6 +28,19 @@ public class Controller {
         List<Product> products = productService.getAllProducts();
         return ResponseEntity.ok(products);
     }
+
+//    @GetMapping
+//    public ResponseEntity<Page<Product>> getProducts(
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "10") int size,
+//            @RequestParam(defaultValue = "prodId") String sortBy) {
+//
+//        PageRequest pageable = PageRequest.of(page, size, Sort.by(sortBy));
+//
+//        Page<Product> products = productService.getAllProductsPaginated(pageable);
+//
+//        return ResponseEntity.ok(products);
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable int id) {
@@ -65,6 +75,18 @@ public class Controller {
         productService.deleteProduct(id);
         return ResponseEntity.ok("Product deleted successfully");
     }
+
+    @GetMapping("/sortedByName")
+    public List<Product> getAllProductsSortedByName() {
+        return productService.getAllProductsSortedByName();
+    }
+    @GetMapping("/sortedById")
+    public List<Product> getAllProductsSortedById(){
+        return productService.getAllProductsSortedById();
+    }
+
+
+
 
 
 
