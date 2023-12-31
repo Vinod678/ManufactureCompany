@@ -1,0 +1,42 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacture Company App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+
+<h1>Product List</h1>
+
+<button id="addProductBtn">Add Product</button>
+
+
+<div id="productList"></div>
+
+<!-- Modal content -->
+<div id="myModal" class="modal">
+    <span id="closeModal" style="cursor: pointer;">&times;</span>
+    <form id="addProductForm">
+        <label for="prodId">Product Id:</label>
+        <input type="text" id="prodId" name="prodId" required><br>
+
+        <label for="prodName">Product Name:</label>
+        <input type="text" id="prodName" name="prodName" required><br>
+
+        <label for="prodCost">Product Cost:</label>
+        <input type="text" id="prodCost" name="prodCost" required><br>
+
+        <button type="button" onclick="addProduct()">Add Product</button>
+    </form>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+</body>
+</html>

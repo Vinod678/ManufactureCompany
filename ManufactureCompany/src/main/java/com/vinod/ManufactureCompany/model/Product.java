@@ -8,16 +8,16 @@ import jakarta.persistence.Id;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int prodId;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String prodId;
     private String prodName;
     private String prodCost;
 
-    public int getProdId() {
+    public String getProdId() {
         return prodId;
     }
 
-    public void setProdId(int prodId) {
+    public void setProdId(String prodId) {
         this.prodId = prodId;
     }
 

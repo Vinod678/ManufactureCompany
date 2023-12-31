@@ -56,8 +56,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void editProduct(int id, Product product) {
-        if (productRepository.existsById(id)) {
+    public void editProduct(String id, Product product) {
+        if (productRepository.existsById(Integer.valueOf(id))) {
             product.setProdId(id);
             productRepository.save(product);
         }
@@ -66,6 +66,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(int id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteProducts() {
+        productRepository.deleteAll();
     }
 
     @Override
