@@ -71,3 +71,24 @@ form input {
 #addProductBtn:hover {
     background-color: #45a049;
 }
+
+/* Style for the "Delete All Products" button */
+#deleteAllProductBtn {
+    padding: 10px;
+    background-color: #45a049;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#deleteAllProductBtn:hover {
+    background-color: red;
+}
+#productList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 1em;
+            list-style: none;
+        }

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
-                productCard.textContent = `${product.prodName} - Cost: ${product.prodCost}`;
+                productCard.textContent = `${product.prodId} - ${product.prodName} - Cost: ${product.prodCost}`;
                 productList.appendChild(productCard);
             });
         })
@@ -60,7 +60,7 @@ function addProduct() {
         const productList = document.getElementById('productList');
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
-        productCard.textContent = `${prodName} - Cost: ${prodCost}`;
+        productCard.textContent = `${prodId} - ${prodName} - Cost: ${prodCost}`;
         productList.appendChild(productCard);
     })
     .catch((error) => {
@@ -72,4 +72,36 @@ function addProduct() {
 function closeModal() {
     modal.style.display = 'none';
     overlay.style.display = 'none';
+}
+
+
+
+
+// Function to Delete All Products
+function deleteAllProducts() {
+    fetch('http://localhost:8080/products/deleteAll', {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        // Perform any additional actions after successful deletion
+          // Refresh the page
+                location.reload();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+//Function to Delete Product By Id
+function deleteProductById(){
+fetch('http://localhost:8080/products/{id}' ,{
+    method: 'DELETE'
+    })
 }
