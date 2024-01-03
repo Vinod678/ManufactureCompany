@@ -99,9 +99,30 @@ function deleteAllProducts() {
     });
 }
 
+
+//Display the DeleteProductById when it is clicked
+const deleteModal = document.getElementById('deleteIdModal');
+const closeProductModal = document.getElementById('closeProductModal');
+const deleteProductById = document.getElementById('deleteProductByIdBtn');
+
+deleteProductById.addEventListener('click' , function(){
+    deleteModal.style.display= 'block';
+    overlay.style.display='block';
+});
+
+closeProductModal.addEventListener('click', function(){
+    deleteModal.style.display = 'none';
+    overlay.style.display = 'none';
+});
+
+
+
+
 //Function to Delete Product By Id
-function deleteProductById(){
-fetch('http://localhost:8080/products/{id}' ,{
+function deleteProductByIdBtn1(){
+var id = document.getElementById('productId').value;
+fetch('http://localhost:8080/products/'+id ,{
     method: 'DELETE'
-    })
+    });
+
 }

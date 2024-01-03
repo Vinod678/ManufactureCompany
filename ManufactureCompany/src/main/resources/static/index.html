@@ -16,8 +16,14 @@
 
 <button id="addProductBtn">Add Product</button>
 <button id="deleteAllProductBtn" onclick="deleteAllProducts()">Delete ALL Products</button>
-<button id="deleteProductById" onclick="deleteProductById()"> Delete Product By Id</button>
+<button id="deleteProductByIdBtn" > Delete Product By Id</button>
 
+<div id="deleteIdModal" class="deleteModal">
+    <span id="closeProductModal" style="cursor:pointer;">&times;</span>
+    <input type="text" id="productId" name="productId" required>
+    <button type="button" onclick="deleteProductByIdBtn1()">Submit</button>
+    <h4>Product Id with deleted successfully</h4>
+</div>
 
 <div id="productList"></div>
 

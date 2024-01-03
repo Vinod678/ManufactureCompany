@@ -79,6 +79,7 @@ public class Controller {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
+        logger.info("Product " + id + " deleted Successfully");
         return ResponseEntity.ok("Product deleted successfully");
     }
     @DeleteMapping("/deleteAll")
